@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using FilmesApi.Models;
-using FilmesApi.Data.Dtos;
 using FilmesApi.Data;
+using FilmesApi.Data.Dtos.CinemaDTOs;
 
 namespace CinemasApi.Controllers
 {
@@ -11,10 +11,10 @@ namespace CinemasApi.Controllers
     [Route("controller")]
     public class CinemaController : ControllerBase
     {
-        private FilmeContext _context;
+        private ApplicationDbContext _context;
         private IMapper _mapper;
 
-        public CinemaController(FilmeContext context, IMapper mapper)
+        public CinemaController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
