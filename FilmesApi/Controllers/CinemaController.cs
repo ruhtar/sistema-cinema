@@ -8,7 +8,7 @@ using FilmesApi.Data.Dtos.CinemaDTOs;
 namespace CinemasApi.Controllers
 {
     [ApiController]
-    [Route("controller")]
+    [Route("cinema")]
     public class CinemaController : ControllerBase
     {
         private ApplicationDbContext _context;
@@ -40,10 +40,9 @@ namespace CinemasApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ReadCinemaDTO> RecuperaCinemas([FromQuery] int skip = 0,
-            [FromQuery] int take = 50)
+        public List<ReadCinemaDTO> RecuperaCinemas()
         {
-            return _mapper.Map<List<ReadCinemaDTO>>(_context.Cinemas.Skip(skip).Take(take));
+            return _mapper.Map<List<ReadCinemaDTO>>(_context.Cinemas.ToList());
         }
 
         [HttpGet("{id}")]

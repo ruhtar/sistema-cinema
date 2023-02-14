@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FilmesApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("filme")]
 public class FilmeController : ControllerBase
 {
 
@@ -41,10 +41,9 @@ public class FilmeController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<ReadFilmeDto> RecuperaFilmes([FromQuery] int skip = 0,
-        [FromQuery] int take = 50)
+    public IEnumerable<ReadFilmeDto> RecuperaFilmes()
     {
-        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take));
+        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.ToList());
     }
 
     [HttpGet("{id}")]
